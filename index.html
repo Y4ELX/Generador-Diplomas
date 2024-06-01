@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<style>
+
+    /* Estilo para el input tipo search */
+    input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 15px;
+        width: 15px;
+        background-image: url(img/tachicon.png); /* Cambia la ruta y el nombre del icono según tu necesidad */
+        background-size: cover;
+        cursor: pointer;
+    }
+    .input{
+        font-family: RobotoSlabR; font-size: 2.5vh; color: #505050; border: none; height: 100%; width: 90%; background-color: transparent;
+    }
+    .input:focus{
+        outline: none;
+    }
+
+    @font-face {
+        font-family: RobotoSlabM;
+        src: url(font/RobotoSlabM.ttf);
+    }
+
+    @font-face {
+        font-family: RobotoSlabR;
+        src: url(font/RobotoSlabR.ttf);
+    }
+    .logo{
+        height: 100%; width: fit-content;
+    }
+    .logo:hover{
+        cursor: pointer;
+    }
+    .cuadritogris{
+        display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #f2f3f5; border-radius: 2vh;
+        transition: 0.3s ease-in;
+    }
+    .cuadritogris:hover{
+        background-color: #e1e4e7;
+        transition: 0.3s ease-in-out;
+    }
+    .cuadritoimg{
+        transition: opacity 0.3s ease-in-out;
+        font-size: 2.5vh; font-family: RobotoSlabM; width: 40vh; display: flex; flex-direction: column; justify-content: left; text-align: left;
+    }
+    .cuadritoimg.visible {
+        opacity: 1; /* Cuando es visible, opacidad 1 */
+    }
+    .cuadritoimg:hover{
+        cursor: pointer;
+    }
+    .imagen{
+        padding: 3vh; border-radius: 4vh; width: 90%; height: fit-content;
+    }
+    #divOpacidad {
+        transition: opacity 0.3s ease-in-out; /* Agrega una transición suave */
+    }
+
+</style>
+<body style="background-color: #e3eef5; padding: 0; margin: 0;">
+    <div style="background: #b60a44; background: linear-gradient(94deg, #b60a44 48%, rgba(54,117,252,1) 100%);
+    height: 9vh; display: flex; flex-direction: column; justify-content: center; padding: 0px; margin: 0px;">
+        <img src="img/logoune.png" class="logo">
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; padding-bottom: 6vh;">
+        <p style="width: 95%; margin-top: 3vh; padding: 2vh; text-align: center; font-family: RobotoSlabM; font-size: 7vh; color: #b60a44; background-color: white;">
+            Elige una plantilla
+        </p>
+
+        <div style="padding: 2vh; padding-top: 5vh; padding-bottom: 7vh; width: 95%; display: flex; flex-direction: column; align-items: center; background-color: white;">
+            <div class="buscador" style="display: flex; margin-bottom: 5vh; flex-direction: row; justify-content: center; align-items: center; width: 50%; border-radius: 100vh; border: solid; border-color: #ebebeb; height: 5vh;">
+                <img src="img/buscar.png" style="height: 100%; margin: 2vh;">
+                <input id="tipInput" type="search" autocomplete="off" placeholder="Ej. Conferencia" class="input">
+            </div>  
+            
+            <div style="width: 90%; padding-top: 3vh; display: flex; flex-wrap: wrap; gap: 5vh; align-items: center; justify-content: center; text-align: center;">
+                
+
+            <!--No se encontro ningun resultado--->
+            <div id="nF" style="display: none; font-family: RobotoSlabM; font-size: 3vh; margin-top: 10vh; margin-bottom: 6vh;">
+            </div>
+
+            <!--Opciones----------------------------------------------------------------------->
+            <div class="cuadritoimg" onclick="genReconocimiento(1)">
+                <div id="cGris" class="cuadritogris">
+                    <img class="imagen" src="plantillas/recSimple.jpg">
+                </div>
+                <div>
+                    <p style="margin: 1vh;">Reconocimiento Expositor</p>
+                    <p style="font-size: 2vh; margin-left: 1vh; margin-top: 0px; color: #505050;">AICQ</p>
+                </div>
+            </div>
+
+            <div class="cuadritoimg" onclick="genReconocimiento(1)">
+                <div id="cGris" class="cuadritogris">
+                    <img class="imagen" src="plantillas/recSimple.jpg">
+                </div>
+                <div>
+                    <p style="margin: 1vh;">Constancia</p>
+                    <p style="font-size: 2vh; margin-left: 1vh; margin-top: 0px; color: #505050;">QFB</p>
+                </div>
+            </div>
+
+            <div class="cuadritoimg" onclick="genReconocimiento(1)">
+                <div id="cGris" class="cuadritogris">
+                    <img class="imagen" src="plantillas/recSimple.jpg">
+                </div>
+                <div>
+                    <p style="margin: 1vh;">1er Certamen de Innovación</p>
+                    <p style="font-size: 2vh; margin-left: 1vh; margin-top: 0px; color: #505050;">QFB</p>
+                </div>
+            </div>
+
+            <div class="cuadritoimg" onclick="genReconocimiento(1)">
+                <div id="cGris" class="cuadritogris">
+                    <img class="imagen" src="plantillas/recSimple.jpg">
+                </div>
+                <div>
+                    <p style="margin: 1vh;">Participación en Staff</p>
+                    <p style="font-size: 2vh; margin-left: 1vh; margin-top: 0px; color: #505050;">AICQ</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<!--Buscaarrr------------------------------------------------------>
+<script>
+
+    var inputElement = document.getElementById("tipInput");
+
+    // Enter
+    inputElement.addEventListener("keydown", function (event) {
+        if (event.keyCode === 13) {
+            ocultarElementos();
+        }
+    });
+
+    // Utilizamos el evento "input" en lugar de "keydown"
+        inputElement.addEventListener("input", function () {
+            var cuadros = document.querySelectorAll('.cuadritoimg');
+
+            if(inputElement.value!=""){
+                ocultarElementos();
+            }else{
+                cuadros.forEach(function (cuadro) {
+                    cuadro.style.display = "block";
+                });
+            }
+        });
+
+
+    function ocultarElementos() {
+        // Obtener el valor del input
+        var tipo = document.getElementById("tipInput").value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        var cuadros = document.querySelectorAll('.cuadritoimg');
+        var encontrado = false;
+        var textov = document.getElementById("tipInput").value;
+        var nF = document.getElementById("nF");
+
+        cuadros.forEach(function (cuadro) {
+            var texto = cuadro.innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            if (texto.includes(tipo)) {
+                cuadro.style.display = "block";
+                encontrado = true;
+                nF.style.display = "none"
+            } else {
+                cuadro.style.display = "none";
+            }
+        });
+
+        if(tipo==""){
+            alert("Ingresa una búsqueda");
+        }
+
+        if(encontrado == false){
+            nF.innerHTML = 'No encontramos ningún resultado para "' +textov +'"';
+            nF.style.display = "block";
+        }
+    }
+</script>
+<script>
+
+        function genReconocimiento(index){
+            switch(index){
+                case 1:
+                    window.open("datos.html", "_self");
+                case 2:
+
+            }
+        }
+</script>
+</html>

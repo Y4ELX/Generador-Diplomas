@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datos</title>
+</head>
+<style>
+    @font-face {
+        font-family: RobotoSlabM;
+        src: url(font/RobotoSlabM.ttf);
+    }
+
+    @font-face {
+        font-family: RobotoSlabR;
+        src: url(font/RobotoSlabR.ttf);
+    }
+
+    .logo {
+        height: 100%;
+        width: fit-content;
+    }
+
+    .logo:hover {
+        cursor: pointer;
+    }
+
+    .cuadritogris {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f2f3f5;
+        border-radius: 2vh;
+        transition: 0.3s ease-in;
+    }
+
+    .cuadritogris:hover {
+        background-color: #e1e4e7;
+        transition: 0.3s ease-in-out;
+    }
+
+    .cuadritoimg {
+        font-size: 2.5vh;
+        font-family: RobotoSlab;
+        width: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        text-align: left;
+    }
+
+    .cuadritoimg:hover {
+        cursor: pointer;
+    }
+
+    .imagen {
+        padding: 3vh;
+        border-radius: 4vh;
+        width: 90%;
+        height: fit-content;
+    }
+
+    #divOpacidad {
+        transition: opacity 0.3s ease-in-out;
+        /* Agrega una transición suave */
+    }
+    .inputfecha{
+        color: #505050; font-size: 2.5vh; width: 59%; height: 5vh; margin-left: 2vh; padding-left: 1vh; font-family: RobotoSlabR; display: flex; flex-direction: row; justify-content: center; align-items: center; border-radius: 1vh; border: solid; border-color: #ebebeb;
+    }
+    .inputfecha:focus{
+        outline: none;
+    }
+
+    .inputs{
+        color: #505050; font-size: 2.5vh; width: 60%; height: 6vh; margin-left: 2vh; padding-left: 1vh; font-family: RobotoSlabR; display: flex; flex-direction: row; justify-content: center; align-items: center; border-radius: 1vh; border: solid; border-color: #ebebeb;
+    }
+    .inputs:focus{
+        outline: none;
+    }
+
+    input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 1.5vh;
+        width: 1.5vh;
+        background-image: url(img/tachicon.png); /* Cambia la ruta y el nombre del icono según tu necesidad */
+        background-size: cover;
+        cursor: pointer;
+    }
+    .boton{
+        font-family: RobotoSlabM; font-size: 3vh; padding: 2vh;
+        padding-left: 4vh; padding-right: 4vh; background-color: #b60a44;
+        color: #ffffff; border: none; border-radius: 2vh; margin-top: 3vh;
+        transition: 0.3s ease-in-out;
+    }
+    .boton:hover{
+        transition: 0.3s ease-in-out;
+        scale: 1.2;
+        background-color: #ca0a4a;
+        cursor: pointer;
+    }
+    .err {
+        color: white; font-family: RobotoSlabM; font-size: 3vh;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    }
+</style>
+
+<body style="background-color: #e3eef5; padding: 0; margin: 0;">
+    <div style="background: #b60a44; background: linear-gradient(94deg, #b60a44 48%, rgba(54,117,252,1) 100%);
+    height: 9vh; display: flex; flex-direction: column; justify-content: center; padding: 0px; margin: 0px;">
+        <img onclick="home()" src="img/logoune.png" class="logo">
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; padding-bottom: 6vh;">
+        <p
+            style="width: 95%; margin-top: 3vh; padding: 2vh; text-align: center; font-family: RobotoSlabM; font-size: 7vh; color: #b60a44; background-color: white;">
+            Ingresa tus datos
+        </p>
+
+        <div style="padding: 2vh; padding-top: 5vh; padding-bottom: 7vh; width: 95%; display: flex; flex-direction: column; align-items: center; background-color: white;">
+
+            <div style="width: 90%; padding-top: 3vh; display: flex; flex-wrap: wrap; gap: 3vh; align-items: center; justify-content: center; text-align: center;">
+                <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center; ">
+                    <p style="font-size: 2.5vh; font-family: RobotoSlabM; text-align: left; width: 16%;">
+                        Nombre completo:
+                    </p>
+                    <input id="nombre" type="search" class="inputs" placeholder="Ej. Yael Monterrubio Elorza">
+                    <span id="nombreError" class="err">*</span>
+                </div>
+
+                <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center; ">
+                    <p style="font-size: 2.5vh; font-family: RobotoSlabM; text-align: left; width: 16%;">
+                        Tema de la exposición:
+                    </p>
+                    <input id="temaExposicion" type="search" class="inputs" placeholder="Ej. Evaluación de la actividad antioxidante en las hojas de Bauhinia forficata">
+                    <span id="temaError" class="err">*</span>
+                </div>
+
+                <div style="width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center; ">
+                    <p style="font-size: 2.5vh; font-family: RobotoSlabM; text-align: left; width: 16%;">
+                        Fecha:
+                    </p>
+                    <input id="fecha" type="date" class="inputfecha" placeholder="Ej. Evaluación de la actividad antioxidante en las hojas de Bauhinia forficata">
+                    <span id="fechaError" class="err">*</span>
+                </div>
+
+                <button onclick="generar()" class="boton">Generar</button>
+
+            </div>
+        </div>
+</body>
+<script>
+
+    function home(){
+        window.open("index.html", "_self")
+    }
+
+    function generar() {
+        var nombre = document.getElementById("nombre").value;
+        var temaExposicion = document.getElementById("temaExposicion").value;
+        var fecha = document.getElementById("fecha").value;
+
+        if (nombre != "" && temaExposicion != "" && fecha != "") {
+            // Almacena los datos en localStorage
+            localStorage.setItem("nombre", nombre);
+            localStorage.setItem("temaExposicion", temaExposicion);
+            localStorage.setItem("fecha", fecha);
+
+            // Abre la página diplmagenerado.html
+            window.open("diplomagenerado.html");
+        } else {
+            if (nombre == "")
+                document.getElementById("nombreError").style.color = "red"; // Cambiado a rojo
+                else
+                document.getElementById("nombreError").style.color = "white"; // Cambiado a rojo
+            if (temaExposicion == "")
+                document.getElementById("temaError").style.color = "red"; // Cambiado a rojo
+            else
+                document.getElementById("temaError").style.color = "white"; // Cambiado a rojo
+            if (fecha == "")
+                document.getElementById("fechaError").style.color = "red"; // Cambiado a rojo
+            else
+                document.getElementById("fechaError").style.color = "white"; // Cambiado a rojo
+        }
+
+    }
+
+    function genReconocimiento(index) {
+        switch (index) {
+            case 1:
+                window.open("genR.html", "_blank");
+            case 2:
+
+        }
+    }
+</script>
+
+</html>
